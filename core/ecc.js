@@ -521,6 +521,7 @@ sjcl.ecc.ecdsa.secretKey.prototype = {
         ss = sjcl.bn.fromBits(hash).add(r.mul(this._exponent)),
         s  = fakeLegacyVersion ? ss.inverseMod(R).mul(k).mod(R)
              : ss.mul(k.inverseMod(R)).mod(R);
-    return sjcl.bitArray.concat(r.toBits(l), s.toBits(l));
+    //return sjcl.bitArray.concat(r.toBits(l), s.toBits(l));
+    return { r: r.toBits(l), s: s.toBits(l) }
   }
 };
